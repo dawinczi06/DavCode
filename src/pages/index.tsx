@@ -5,20 +5,27 @@ import Section from '../components/feature/Section'
 import MyExperience from '../components/feature/MyExperience'
 import MyProjects from '../components/feature/MyProjects'
 import { useRef } from 'react'
+import Contact from '../components/feature/Contact'
 
 const Home: NextPage = () => {
-    const ref = useRef<HTMLDivElement>(null)
+    const mySkillsRef = useRef<HTMLDivElement>(null)
+    const myExpRef = useRef<HTMLDivElement>(null)
+    const myProjectsRef = useRef<HTMLDivElement>(null)
+    const contactRef = useRef<HTMLDivElement>(null)
 
     return (
         <>
-            <Hero />
+            <Hero
+                menuRefs={[mySkillsRef, myExpRef, myProjectsRef, contactRef]}
+            />
 
             <Section>
-                <MySkills ref={ref} />
-                <MyExperience />
+                <MySkills ref={mySkillsRef} />
+                <MyExperience ref={myExpRef} />
             </Section>
 
-            <MyProjects />
+            <MyProjects ref={myProjectsRef} />
+            <Contact ref={contactRef} />
         </>
     )
 }

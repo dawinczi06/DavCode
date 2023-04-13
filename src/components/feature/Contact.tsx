@@ -1,21 +1,21 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 
-const MyProjects: ForwardRefRenderFunction<HTMLDivElement> = (
+const Contact: ForwardRefRenderFunction<HTMLDivElement> = (
     { children },
     ref
 ) => {
     return (
         <section
             ref={ref}
-            className="w-full border-b border-b-zinc-800 bg-zinc-900 px-5 py-40 md:px-10"
+            className="w-full border-b border-b-zinc-900 bg-zinc-800 px-5 py-40 md:px-10"
         >
             <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-center space-y-40">
                 <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
-                    My Projects
+                    Contact
                 </h2>
             </div>
         </section>
     )
 }
 
-export default forwardRef(MyProjects)
+export default forwardRef(Contact)

@@ -4,7 +4,6 @@ import cx from 'classnames'
 type Props = {
     isFirst: boolean
     isLast: boolean
-
     years: string
 }
 
@@ -17,7 +16,7 @@ const TimelineTile: FC<Props> = (props) => {
                     'rounded-b-full': props.isLast
                 })}
             />
-            <div className="relative w-10">
+            <div className="relative w-12 pr-1">
                 <div className="mt-16 h-1 w-full bg-teal-700" />
                 <div className="absolute top-[54px] -left-3.5 h-6 w-6 rounded-full border-4 border-black bg-teal-700" />
             </div>

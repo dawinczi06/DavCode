@@ -1,10 +1,13 @@
-import { FC } from 'react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import TimelineTile from './TimelineTile'
 import { AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline'
 
-const MyExperience: FC = () => {
+const MyExperience: ForwardRefRenderFunction<HTMLDivElement> = (
+    { children },
+    ref
+) => {
     return (
-        <div>
+        <div ref={ref}>
             <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
                 Experience & Education
             </h2>
@@ -147,4 +150,4 @@ const MyExperience: FC = () => {
     )
 }
 
-export default MyExperience
+export default forwardRef(MyExperience)
