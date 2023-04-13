@@ -29,9 +29,11 @@ const MyExperience: FC = () => {
                     <ul className="mt-5 list-inside list-disc text-sm">
                         <li>
                             Implementing new features, components and logic
-                            based on Adobe XD designs. Maintaining the code,
-                            reacting on issues, implementing
-                            changes/suggestions.
+                            based on Adobe XD designs.
+                        </li>
+                        <li>
+                            Maintaining the code, reacting on issues,
+                            implementing changes/suggestions.
                         </li>
                         <li>
                             Using React + Next.JS with Tailwind CSS framework
@@ -39,21 +41,25 @@ const MyExperience: FC = () => {
                         </li>
                         <li>
                             Preparing infrastructure for API requests with
-                            OpenAPI and SWR
+                            OpenAPI and SWR.
                         </li>
                         <li>
                             Using Flutter technology to develop mobile
-                            application
+                            application.
                         </li>
                         <li>
                             Working on Angular legacy project as standalone
-                            developer. Improving performance, refactoring code,
-                            adding features. Doing simple tasks on the backend
-                            (.NET technology) and MongoDB.
+                            developer.
                         </li>
                         <li>
-                            Preparing email templates in SendGrid environment
+                            Improving performance, refactoring code, adding
+                            features.
                         </li>
+                        <li>
+                            Doing simple tasks on the backend (.NET technology)
+                            and MongoDB.
+                        </li>
+                        <li>Using SendGrid API to manage mail delivery.</li>
                     </ul>
                 </TimelineTile>
                 <TimelineTile
@@ -110,7 +116,7 @@ const MyExperience: FC = () => {
                         <li>Repairing PCA Boards</li>
                         <li>
                             Verifying different production processes and
-                            implement change
+                            implement changes
                         </li>
                     </ul>
                 </TimelineTile>
