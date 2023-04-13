@@ -28,7 +28,11 @@ const MySkills: ForwardRefRenderFunction<HTMLDivElement> = (
 
             <div className="mt-20 grid grid-cols-5 gap-10">
                 {skills.map((item) => (
-                    <Tile imageUrl={item.imgUrl} label={item.label} />
+                    <Tile
+                        imageUrl={item.imgUrl}
+                        label={item.label}
+                        key={item.label}
+                    />
                 ))}
             </div>
         </div>

@@ -16,7 +16,7 @@ const Hero: FC = () => {
         >
             <Header />
             <div className="relative flex h-full w-full max-w-screen-2xl flex-1 items-center justify-center space-x-20 pb-20">
-                <div className="flex flex-col justify-center text-zinc-300">
+                <div className="flex w-full flex-col justify-center text-zinc-300">
                     <h1 className="text-3xl font-bold">
                         Hello, <span className="text-teal-600">I am</span>
                     </h1>
