@@ -26,7 +26,7 @@ const MyExperience: FC = () => {
                         </div>
                     </div>
 
-                    <ul className="mt-5 list-inside list-disc text-sm">
+                    <ul className="mt-5 list-inside list-disc space-y-1 text-sm">
                         <li>
                             Implementing new features, components and logic
                             based on Adobe XD designs.
@@ -79,7 +79,7 @@ const MyExperience: FC = () => {
                         </div>
                     </div>
 
-                    <ul className="mt-5 list-inside list-disc text-sm">
+                    <ul className="mt-5 list-inside list-disc space-y-1 text-sm">
                         <li>
                             Verifying quality of software and reporting issues
                         </li>
@@ -107,7 +107,7 @@ const MyExperience: FC = () => {
                         </div>
                     </div>
 
-                    <ul className="mt-5 list-inside list-disc text-sm">
+                    <ul className="mt-5 list-inside list-disc space-y-1 text-sm">
                         <li>
                             Maintaining and improving testing stations for
                             medical devices
