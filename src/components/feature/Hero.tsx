@@ -15,15 +15,15 @@ const Hero: FC = () => {
             }}
         >
             <Header />
-            <div className="mt-48 grid w-full max-w-screen-2xl grid-cols-2 gap-20">
-                <div className="flex flex-col justify-center">
+            <div className="relative flex h-full w-full max-w-screen-2xl flex-1 items-center justify-center space-x-20 pb-20">
+                <div className="flex flex-col justify-center text-zinc-300">
                     <h1 className="text-3xl font-bold">
                         Hello, <span className="text-teal-600">I am</span>
                     </h1>
-                    <h2 className="mt-5 -ml-1 text-7xl font-bold text-gray-200">
+                    <h2 className="mt-5 -ml-1 text-7xl font-bold">
                         Dawid Karbowniczek
                     </h2>
-                    <p className="text-3xl">Software Developer</p>
+                    <p className="text-3xl text-teal-600">Software Developer</p>
                     <p className="mt-5 text-lg text-gray-200 ">
                         Passionate programmer, always keen to embrace new
                         technologies, looking for different solutions.

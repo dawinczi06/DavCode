@@ -19,7 +19,7 @@ const TimelineTile: FC<Props> = (props) => {
             />
             <div className="relative w-10">
                 <div className="mt-16 h-1 w-full bg-teal-700" />
-                <div className="absolute top-[54px] -left-3.5 h-6 w-6 rounded-full border-4 border-zinc-900 bg-teal-700" />
+                <div className="absolute top-[54px] -left-3.5 h-6 w-6 rounded-full border-4 border-black bg-teal-700" />
             </div>
             <div className="flex w-full flex-col">
                 <div className="flex h-8 max-w-max items-center rounded-t-lg border-b border-b-black bg-zinc-800 px-8 text-sm font-bold text-teal-600">
