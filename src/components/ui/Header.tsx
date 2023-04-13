@@ -1,13 +1,57 @@
-import { FC, RefObject, useCallback, useEffect, useState } from 'react'
+import { FC, useEffect, useLayoutEffect, useState } from 'react'
 import Link from 'next/link'
 import { useScroll } from 'framer-motion'
 import cx from 'classnames'
 
-type Props = {
-    menuRefs: RefObject<HTMLDivElement>[]
+const capitalize = (text: string) =>
+    text.charAt(0).toUpperCase() + text.substr(1)
+
+const clamp = (value: number) => Math.max(0, value)
+
+const isBetween = (value: number, floor: number, ceil: number) =>
+    value >= floor && value <= ceil
+
+// hooks
+const useScrollspy = (ids: string[], offset: number = 0) => {
+    const [activeId, setActiveId] = useState('')
+
+    useLayoutEffect(() => {
+        const listener = () => {
+            const scroll = window.scrollY
+
+            const position = ids
+                .map((id) => {
+                    const element = document.getElementById(id)
+
+                    if (!element) return { id, top: -1, bottom: -1 }
+
+                    const rect = element.getBoundingClientRect()
+                    const top = clamp(rect.top + scroll - offset)
+                    const bottom = clamp(rect.bottom + scroll - offset)
+
+                    return { id, top, bottom }
+                })
+                .find(({ top, bottom }) => isBetween(scroll, top, bottom))
+
+            setActiveId(position?.id || '')
+        }
+
+        listener()
+
+        window.addEventListener('resize', listener)
+        window.addEventListener('scroll', listener)
+
+        return () => {
+            window.removeEventListener('resize', listener)
+            window.removeEventListener('scroll', listener)
+        }
+    }, [ids, offset])
+
+    return activeId
 }
-const Header: FC<Props> = ({ menuRefs }) => {
+const Header: FC = () => {
     const ids = ['home', 'skills', 'experience', 'projects', 'contact']
+    const activeId = useScrollspy(ids, 80)
 
     const { scrollY } = useScroll()
 
@@ -24,21 +68,6 @@ const Header: FC<Props> = ({ menuRefs }) => {
             unsubscribeY()
         }
     }, [scrollY])
-
-    const scrollFunction = useCallback(
-        (elementRef: RefObject<HTMLDivElement>) => {
-            if (elementRef && elementRef.current) {
-                const yOffset = -120
-                const y =
-                    elementRef.current.getBoundingClientRect().top +
-                    window.scrollY +
-                    yOffset
-
-                window.scrollTo({ top: y, behavior: 'smooth' })
-            }
-        },
-        []
-    )
 
     return (
         <header
@@ -57,42 +86,18 @@ const Header: FC<Props> = ({ menuRefs }) => {
                     </Link>
                 </div>
                 <ul className="flex space-x-8 text-sm font-bold uppercase text-gray-300">
-                    <li
-                        onClick={() =>
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                        }
-                        className="cursor-pointer text-teal-600 underline underline-offset-8 hover:text-teal-600 hover:underline hover:underline-offset-8"
-                    >
-                        Home
-                    </li>
-
-                    <li
-                        onClick={() => scrollFunction(menuRefs[0])}
-                        className="cursor-pointer hover:text-teal-600 hover:underline hover:underline-offset-8"
-                    >
-                        Skills
-                    </li>
-
-                    <li
-                        onClick={() => scrollFunction(menuRefs[1])}
-                        className="cursor-pointer hover:text-teal-600 hover:underline hover:underline-offset-8"
-                    >
-                        Experience
-                    </li>
-
-                    <li
-                        onClick={() => scrollFunction(menuRefs[2])}
-                        className="cursor-pointer hover:text-teal-600 hover:underline hover:underline-offset-8"
-                    >
-                        Projects
-                    </li>
-
-                    <li
-                        onClick={() => scrollFunction(menuRefs[3])}
-                        className="hover: cursor-pointer underline-offset-8 hover:text-teal-600 hover:underline"
-                    >
-                        Contact
-                    </li>
+                    {ids.map((id) => (
+                        <li
+                            key={id}
+                            className={cx(
+                                'cursor-pointer hover:text-teal-600 hover:underline hover:underline-offset-8',
+                                id === activeId &&
+                                    'text-teal-600 underline underline-offset-8 '
+                            )}
+                        >
+                            <a href={`#${id}`}>{capitalize(id)}</a>
+                        </li>
+                    ))}
                 </ul>
                 <div>
                     <button className="h-10 rounded bg-teal-600 px-5 text-sm font-bold uppercase hover:bg-teal-700">

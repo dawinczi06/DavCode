@@ -1,10 +1,7 @@
-import { FC, forwardRef, ForwardRefRenderFunction } from 'react'
+import { FC } from 'react'
 import Tile from '../ui/Tile'
 
-const MySkills: ForwardRefRenderFunction<HTMLDivElement> = (
-    { children },
-    ref
-) => {
+const MySkills: FC = () => {
     const skills: { imgUrl: string; label: string }[] = [
         { imgUrl: '/images/html-logo.png', label: 'HTML' },
         { imgUrl: '/images/css-logo.png', label: 'CSS' },
@@ -19,7 +16,7 @@ const MySkills: ForwardRefRenderFunction<HTMLDivElement> = (
     ]
 
     return (
-        <div ref={ref}>
+        <div id={'skills'} className="-mt-32 pt-32">
             <div className="relative w-full text-center">
                 <h2 className="text-4xl font-bold uppercase tracking-widest">
                     My skills
@@ -39,4 +36,4 @@ const MySkills: ForwardRefRenderFunction<HTMLDivElement> = (
     )
 }
 
-export default forwardRef(MySkills)
+export default MySkills

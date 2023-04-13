@@ -1,13 +1,9 @@
-import { FC, RefObject } from 'react'
+import { FC } from 'react'
 import { ArrowLongDownIcon } from '@heroicons/react/24/outline'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import HeroAnimation from './HeroAnimation'
 import Header from '../ui/Header'
-
-type Props = {
-    menuRefs: RefObject<HTMLDivElement>[]
-}
-const Hero: FC<Props> = ({ menuRefs }) => {
+const Hero: FC = () => {
     return (
         <div
             className="relative flex min-h-screen flex-1 flex-col items-center px-5 shadow-lg shadow-black md:px-10"
@@ -17,8 +13,11 @@ const Hero: FC<Props> = ({ menuRefs }) => {
                 backgroundSize: 'cover'
             }}
         >
-            <Header menuRefs={menuRefs} />
-            <div className="relative flex h-full w-full max-w-screen-2xl flex-1 items-center justify-center space-x-20 pb-20">
+            <Header />
+            <div
+                id={'home'}
+                className="relative flex h-full w-full max-w-screen-2xl flex-1 items-center justify-center space-x-20 pb-20"
+            >
                 <div className="flex w-full flex-col justify-center text-zinc-300">
                     <h1 className="text-3xl font-bold">
                         Hello, <span className="text-teal-600">I am</span>
