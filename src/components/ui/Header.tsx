@@ -29,12 +29,12 @@ const Header: FC = () => {
 
     return (
         <header
-            className={cx('fixed top-0 z-20 w-full', {
+            className={cx('fixed top-0 z-20 w-full px-5 md:px-10', {
                 'border-b border-b-zinc-800 bg-zinc-900 shadow-lg shadow-black':
                     isFollowing
             })}
         >
-            <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between px-5 md:px-10">
+            <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between">
                 <div>
                     <Link href={'/'}>
                         <a className="text-3xl font-bold uppercase">
