@@ -4,8 +4,9 @@ import { AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline'
 
 const MyExperience: FC = () => {
     return (
-        <div id={'experience'} className="-mt-32 pt-32">
-            <h2 className="text-center text-4xl font-bold uppercase tracking-widest">
+        <div id={'experience'} className="pt-32">
+            <img src="/images/book.png" className="mx-auto h-16 w-16" alt="" />
+            <h2 className="mt-10 text-center text-4xl font-bold uppercase tracking-widest">
                 Experience & Education
             </h2>
             <div className="mt-20">

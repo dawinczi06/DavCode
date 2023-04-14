@@ -8,7 +8,7 @@ const Section: PropsWithChildren<FC> = ({ children }) => {
                 backgroundSize: 'cover'
             }}
         >
-            <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-center space-y-40">
+            <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-center space-y-8">
                 {children}
             </div>
         </section>

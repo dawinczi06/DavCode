@@ -18,7 +18,12 @@ const MySkills: FC = () => {
     return (
         <div id={'skills'} className="-mt-32 pt-32">
             <div className="relative w-full text-center">
-                <h2 className="text-4xl font-bold uppercase tracking-widest">
+                <img
+                    src="/images/cogwheel.png"
+                    className="mx-auto h-16 w-16"
+                    alt=""
+                />
+                <h2 className="mt-10 text-4xl font-bold uppercase tracking-widest">
                     My skills
                 </h2>
             </div>

@@ -18,7 +18,7 @@ const Hero: FC = () => {
                 id={'home'}
                 className="relative flex h-full w-full max-w-screen-2xl flex-1 items-center justify-center space-x-20 pb-20"
             >
-                <div className="flex w-full flex-col justify-center text-zinc-300">
+                <div className="flex w-full flex-col justify-center">
                     <h1 className="text-3xl font-bold">
                         Hello, <span className="text-teal-600">I am</span>
                     </h1>
@@ -26,13 +26,13 @@ const Hero: FC = () => {
                         Dawid Karbowniczek
                     </h2>
                     <p className="text-3xl text-teal-600">Software Developer</p>
-                    <p className="mt-5 text-lg text-gray-200 ">
+                    <p className="mt-5 text-lg">
                         Passionate programmer, always keen to embrace new
                         technologies, looking for different solutions.
                     </p>
                     <div className="group relative mt-10 h-12 max-w-max cursor-pointer">
                         <button className="relative z-10 flex h-full items-center space-x-4 rounded bg-teal-600 px-7 text-lg font-bold transition group-hover:bg-teal-700">
-                            <span className="text-zinc-200">Projects</span>
+                            <span>Projects</span>
                             <ArrowLongRightIcon className="h-6 w-6 transition group-hover:translate-x-2" />
                         </button>
                         <div className="absolute top-2 left-2 h-full w-full rounded border border-teal-600"></div>
@@ -42,7 +42,7 @@ const Hero: FC = () => {
                 <HeroAnimation />
             </div>
 
-            <ArrowLongDownIcon className="absolute bottom-20 h-14 w-14 animate-bounce text-white" />
+            <ArrowLongDownIcon className="absolute bottom-20 h-14 w-14 animate-bounce text-zinc-100" />
         </div>
     )
 }

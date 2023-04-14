@@ -1,57 +1,15 @@
-import { FC, useEffect, useLayoutEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useScroll } from 'framer-motion'
 import cx from 'classnames'
+import { useScrollSpy } from '../../hooks/useScrollSpy'
 
 const capitalize = (text: string) =>
-    text.charAt(0).toUpperCase() + text.substr(1)
+    text.charAt(0).toUpperCase() + text.substring(1)
 
-const clamp = (value: number) => Math.max(0, value)
-
-const isBetween = (value: number, floor: number, ceil: number) =>
-    value >= floor && value <= ceil
-
-// hooks
-const useScrollspy = (ids: string[], offset: number = 0) => {
-    const [activeId, setActiveId] = useState('')
-
-    useLayoutEffect(() => {
-        const listener = () => {
-            const scroll = window.scrollY
-
-            const position = ids
-                .map((id) => {
-                    const element = document.getElementById(id)
-
-                    if (!element) return { id, top: -1, bottom: -1 }
-
-                    const rect = element.getBoundingClientRect()
-                    const top = clamp(rect.top + scroll - offset)
-                    const bottom = clamp(rect.bottom + scroll - offset)
-
-                    return { id, top, bottom }
-                })
-                .find(({ top, bottom }) => isBetween(scroll, top, bottom))
-
-            setActiveId(position?.id || '')
-        }
-
-        listener()
-
-        window.addEventListener('resize', listener)
-        window.addEventListener('scroll', listener)
-
-        return () => {
-            window.removeEventListener('resize', listener)
-            window.removeEventListener('scroll', listener)
-        }
-    }, [ids, offset])
-
-    return activeId
-}
 const Header: FC = () => {
     const ids = ['home', 'skills', 'experience', 'projects', 'contact']
-    const activeId = useScrollspy(ids, 80)
+    const activeId = useScrollSpy(ids, 80)
 
     const { scrollY } = useScroll()
 
@@ -76,16 +34,16 @@ const Header: FC = () => {
                     isFollowing
             })}
         >
-            <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between">
+            <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between px-5 md:px-10">
                 <div>
                     <Link href={'/'}>
                         <a className="text-3xl font-bold uppercase">
-                            <span className="text-gray-50">Dav</span>
+                            <span className="text-zinc-100">Dav</span>
                             <span className="text-teal-600">Code</span>
                         </a>
                     </Link>
                 </div>
-                <ul className="flex space-x-8 text-sm font-bold uppercase text-gray-300">
+                <ul className="flex space-x-8 text-sm font-bold uppercase text-zinc-100">
                     {ids.map((id) => (
                         <li
                             key={id}
@@ -100,7 +58,7 @@ const Header: FC = () => {
                     ))}
                 </ul>
                 <div>
-                    <button className="h-10 rounded bg-teal-600 px-5 text-sm font-bold uppercase hover:bg-teal-700">
+                    <button className="h-10 rounded bg-teal-700 px-5 text-sm font-bold uppercase hover:bg-teal-600">
                         Download CV
                     </button>
                 </div>
