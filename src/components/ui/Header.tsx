@@ -13,11 +13,11 @@ const Header: FC = () => {
 
     const { scrollY } = useScroll()
 
-    const [isFollowing, setIsFollowing] = useState<boolean>(scrollY.get() > 200)
+    const [isFollowing, setIsFollowing] = useState<boolean>(scrollY.get() > 0)
 
     useEffect(() => {
         const updateHeader = () => {
-            scrollY.get() > 200 ? setIsFollowing(true) : setIsFollowing(false)
+            scrollY.get() > 0 ? setIsFollowing(true) : setIsFollowing(false)
         }
 
         const unsubscribeY = scrollY.on('change', updateHeader)
@@ -37,13 +37,13 @@ const Header: FC = () => {
             <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between">
                 <div>
                     <Link href={'/'}>
-                        <a className="text-3xl font-bold uppercase">
+                        <a className="text-xl font-bold uppercase sm:text-3xl">
                             <span className="text-zinc-100">Dav</span>
                             <span className="text-teal-600">Code</span>
                         </a>
                     </Link>
                 </div>
-                <ul className="flex space-x-8 text-sm font-bold uppercase text-zinc-100">
+                <ul className="hidden space-x-8 text-sm font-bold uppercase text-zinc-100 lg:flex">
                     {ids.map((id) => (
                         <li
                             key={id}
@@ -58,7 +58,7 @@ const Header: FC = () => {
                     ))}
                 </ul>
                 <div>
-                    <button className="h-10 rounded bg-teal-700 px-5 text-sm font-bold uppercase hover:bg-teal-600">
+                    <button className="h-8 rounded bg-teal-700 px-3 text-xs font-bold uppercase hover:bg-teal-600 sm:h-10 sm:px-5 sm:text-sm">
                         Download CV
                     </button>
                 </div>

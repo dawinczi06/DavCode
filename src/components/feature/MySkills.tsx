@@ -28,7 +28,7 @@ const MySkills: FC = () => {
                 </h2>
             </div>
 
-            <div className="mt-20 grid grid-cols-5 gap-10">
+            <div className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-10">
                 {skills.map((item) => (
                     <Tile
                         imageUrl={item.imgUrl}

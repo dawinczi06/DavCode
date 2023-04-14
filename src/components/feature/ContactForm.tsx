@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import FormInput from '../ui/FormInput'
 import FormTextarea from '../ui/FormTextarea'
@@ -9,15 +9,21 @@ type Props = {
     callback: (payload: ContactFormDto) => Promise<void>
 }
 const ContactForm: FC<Props> = (props) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
     const {
         register,
         handleSubmit,
         reset,
-        formState: { errors, isSubmitting }
+        formState: { errors }
     } = useForm<ContactFormDto>()
 
     const _submit = (payload: ContactFormDto) => {
-        props.callback(payload).then(() => reset())
+        setIsLoading(true)
+        props.callback(payload).then(() => {
+            reset()
+            setIsLoading(false)
+        })
     }
 
     return (
@@ -26,7 +32,7 @@ const ContactForm: FC<Props> = (props) => {
             onSubmit={handleSubmit(_submit)}
             className="mt-20 w-full max-w-screen-md rounded-lg border border-black bg-zinc-800 p-10"
         >
-            <fieldset className="grid grid-cols-2 gap-5">
+            <fieldset className="grid gap-5 sm:grid-cols-2">
                 <div>
                     <FormInput
                         {...register('name', {
@@ -70,7 +76,7 @@ const ContactForm: FC<Props> = (props) => {
             <div className="mx-auto mt-5 max-w-xs">
                 <Button
                     type={'submit'}
-                    isSubmitting={isSubmitting}
+                    isSubmitting={isLoading}
                     className="h-10 w-full rounded bg-teal-700 px-5 text-sm font-bold uppercase text-zinc-100 hover:bg-teal-600"
                 >
                     Send message

@@ -23,7 +23,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
             <>
                 <Spinner
                     className={cx(
-                        'absolute h-2 w-6 fill-current',
+                        'absolute h-3 fill-current',
                         isSubmitting ? 'visible' : 'invisible'
                     )}
                 />
