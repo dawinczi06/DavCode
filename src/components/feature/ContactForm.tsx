@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import FormInput from '../ui/FormInput'
 import FormTextarea from '../ui/FormTextarea'
 import { validateRequired } from '../../utils/validators'
+import Button from '../ui/Button'
 
 type Props = {
     callback: (payload: ContactFormDto) => Promise<void>
@@ -12,7 +13,7 @@ const ContactForm: FC<Props> = (props) => {
         register,
         handleSubmit,
         reset,
-        formState: { errors }
+        formState: { errors, isSubmitting }
     } = useForm<ContactFormDto>()
 
     const _submit = (payload: ContactFormDto) => {
@@ -67,12 +68,13 @@ const ContactForm: FC<Props> = (props) => {
                 </div>
             </fieldset>
             <div className="mx-auto mt-5 max-w-xs">
-                <button
+                <Button
                     type={'submit'}
+                    isSubmitting={isSubmitting}
                     className="h-10 w-full rounded bg-teal-700 px-5 text-sm font-bold uppercase text-zinc-100 hover:bg-teal-600"
                 >
                     Send message
-                </button>
+                </Button>
             </div>
         </form>
     )
