@@ -2,6 +2,7 @@ import { FC } from 'react'
 import ContactForm, { ContactFormDto } from './ContactForm'
 import cx from 'classnames'
 import Spinner from '../ui/Spinner'
+import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 const Contact: FC = () => {
     const handleContactMe = async (payload: ContactFormDto) => {
@@ -36,11 +37,47 @@ const Contact: FC = () => {
             }}
         >
             <div className="mx-auto -mt-32 flex max-w-screen-2xl flex-col items-center justify-center pt-32">
-                <img src="/images/envelope.png" className="h-16 w-16" alt="" />
+                <img
+                    src="/images/envelope.png"
+                    className="h-16 w-16"
+                    alt="envelope-icon"
+                />
                 <h2 className="mt-10 text-center text-4xl font-bold uppercase tracking-widest">
                     Contact
                 </h2>
-                <ContactForm callback={handleContactMe} />
+                <div className="mt-20 flex h-full w-full max-w-screen-xl flex-col items-center justify-center lg:flex-row lg:items-start lg:space-x-5">
+                    <div className="order-last mt-5 flex w-full flex-col space-y-3 md:flex-row md:space-x-3 md:space-y-0 lg:order-first lg:mt-0 lg:w-fit lg:max-w-screen-md lg:flex-col lg:space-x-0 lg:space-y-5 ">
+                        <div className="flex w-full flex-col items-center justify-center space-y-5 rounded-lg border border-black bg-zinc-800 p-6 sm:w-full md:h-40 lg:w-full">
+                            <PhoneIcon className="h-10 w-10 text-teal-700" />
+                            <p className="text-sm font-bold text-zinc-300 md:text-base">
+                                +48 609 398 947
+                            </p>
+                        </div>
+                        <div className="flex w-full flex-col items-center justify-center space-y-5 rounded-lg border border-black bg-zinc-800 p-6 sm:w-full md:h-40 lg:w-full">
+                            <EnvelopeIcon className="h-10 w-10 text-teal-700" />
+                            <p className="text-sm font-bold text-zinc-300 md:text-base">
+                                karbowniczek.daw@gmail.com
+                            </p>
+                        </div>
+                        <div className="flex w-full flex-col items-center justify-center space-y-5 rounded-lg border border-black bg-zinc-800 p-6 sm:w-full md:h-40 lg:w-full">
+                            <img
+                                src="/images/linkedin-logo.png"
+                                className="h-10 w-10"
+                                alt="linkedin-logo"
+                            />
+                            <p className="text-sm font-bold text-zinc-300 md:text-base">
+                                <a
+                                    href="https://www.linkedin.com/in/d-karbowniczek/"
+                                    className="underline hover:text-teal-700"
+                                >
+                                    LinkedIn
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <ContactForm callback={handleContactMe} />
+                </div>
             </div>
         </section>
     )

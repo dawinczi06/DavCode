@@ -30,7 +30,7 @@ const ContactForm: FC<Props> = (props) => {
         <form
             noValidate
             onSubmit={handleSubmit(_submit)}
-            className="mt-20 w-full max-w-screen-md rounded-lg border border-black bg-zinc-800 p-10"
+            className="w-full self-stretch rounded-lg border border-black bg-zinc-800 p-10 lg:max-w-screen-md"
         >
             <fieldset className="grid gap-5 sm:grid-cols-2">
                 <div>
