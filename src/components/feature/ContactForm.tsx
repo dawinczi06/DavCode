@@ -4,6 +4,7 @@ import FormInput from '../ui/FormInput'
 import FormTextarea from '../ui/FormTextarea'
 import { validateEmail, validateRequired } from '../../utils/validators'
 import Button from '../ui/Button'
+import { ContactFormDto } from '../../interfaces/contactForm'
 
 type Props = {
     callback: (payload: ContactFormDto) => Promise<void>
@@ -93,10 +94,3 @@ const ContactForm: FC<Props> = (props) => {
 }
 
 export default ContactForm
-
-export interface ContactFormDto {
-    name: string
-    email: string
-    subject: string
-    message: string
-}

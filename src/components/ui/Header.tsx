@@ -59,7 +59,7 @@ const Header: FC = () => {
                 </ul>
                 <div>
                     <button className="h-8 rounded bg-teal-700 px-3 text-xs font-bold uppercase hover:bg-teal-600 sm:h-10 sm:px-5 sm:text-sm">
-                        Download CV
+                        Open CV
                     </button>
                 </div>
             </div>

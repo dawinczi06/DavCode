@@ -1,10 +1,13 @@
 import { FC } from 'react'
-import ContactForm, { ContactFormDto } from './ContactForm'
+import ContactForm from './ContactForm'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import { useAppContext } from '../../providers/AppContextProvider'
+import { ContactFormDto } from '../../interfaces/contactForm'
 
 const Contact: FC = () => {
-    const handleContactMe = async (payload: ContactFormDto) => {
+    const { successReceived, errorReceived } = useAppContext()
+    const handleContactMe = async (payload: ContactFormDto): Promise<void> => {
         const res = await fetch('/api/sendgrid', {
             body: JSON.stringify({
                 email: payload.email,
@@ -20,8 +23,10 @@ const Contact: FC = () => {
 
         const { error } = await res.json()
         if (error) {
-            return Promise.reject('Something went wrong')
+            errorReceived('Something went wrong. Please try again!')
+            return Promise.reject()
         } else {
+            successReceived('Message was sent successfully!')
             return Promise.resolve()
         }
     }
