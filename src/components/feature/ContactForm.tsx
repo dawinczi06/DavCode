@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import FormInput from '../ui/FormInput'
 import FormTextarea from '../ui/FormTextarea'
-import { validateRequired } from '../../utils/validators'
+import { validateEmail, validateRequired } from '../../utils/validators'
 import Button from '../ui/Button'
 
 type Props = {
@@ -30,7 +30,7 @@ const ContactForm: FC<Props> = (props) => {
         <form
             noValidate
             onSubmit={handleSubmit(_submit)}
-            className="w-full self-stretch rounded-lg border border-black bg-zinc-800 p-10 lg:max-w-screen-md"
+            className="w-full self-stretch rounded-lg border border-black bg-zinc-800 p-6 md:p-10 lg:max-w-screen-md"
         >
             <fieldset className="grid gap-5 sm:grid-cols-2">
                 <div>
@@ -39,13 +39,17 @@ const ContactForm: FC<Props> = (props) => {
                             ...validateRequired()
                         })}
                         label={'Name'}
+                        maxLength={50}
                         required
                         errorMessage={errors.name?.message}
                     />
                 </div>
                 <div>
                     <FormInput
-                        {...register('email', { ...validateRequired() })}
+                        {...register('email', {
+                            ...validateRequired(),
+                            ...validateEmail()
+                        })}
                         label={'Email'}
                         required
                         errorMessage={errors.email?.message}
@@ -59,6 +63,7 @@ const ContactForm: FC<Props> = (props) => {
                             ...validateRequired()
                         })}
                         label={'Subject'}
+                        maxLength={100}
                         required
                         errorMessage={errors.subject?.message}
                     />
@@ -67,6 +72,7 @@ const ContactForm: FC<Props> = (props) => {
                     <FormTextarea
                         {...register('message', { ...validateRequired() })}
                         label={'Message'}
+                        maxLength={500}
                         required
                         rows={6}
                         errorMessage={errors.message?.message}
@@ -88,7 +94,7 @@ const ContactForm: FC<Props> = (props) => {
 
 export default ContactForm
 
-export type ContactFormDto = {
+export interface ContactFormDto {
     name: string
     email: string
     subject: string

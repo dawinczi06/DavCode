@@ -3,7 +3,29 @@ import { ArrowLongDownIcon } from '@heroicons/react/24/outline'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import HeroAnimation from './HeroAnimation'
 import Header from '../ui/Header'
+import { motion } from 'framer-motion'
 const Hero: FC = () => {
+    const variants = {
+        hidden: { y: -100, opacity: 0 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1
+            }
+        }
+    }
+
+    const arrow = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 1
+            }
+        }
+    }
+
     return (
         <div
             className="relative flex min-h-screen flex-1 flex-col items-center px-5 shadow-lg shadow-black md:px-10"
@@ -14,7 +36,10 @@ const Hero: FC = () => {
             }}
         >
             <Header />
-            <div
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={variants}
                 id={'home'}
                 className="relative flex h-full w-full max-w-screen-2xl flex-1 flex-col items-center justify-center py-20 lg:space-x-20 xl:flex-row"
             >
@@ -42,9 +67,11 @@ const Hero: FC = () => {
                 </div>
 
                 <HeroAnimation />
-            </div>
+            </motion.div>
 
-            <ArrowLongDownIcon className="absolute bottom-6 h-14 w-14 animate-bounce text-zinc-100 xl:bottom-20" />
+            <motion.div initial="hidden" whileInView="visible" variants={arrow}>
+                <ArrowLongDownIcon className="absolute bottom-6 h-14 w-14 animate-bounce text-zinc-100 xl:bottom-20" />
+            </motion.div>
         </div>
     )
 }

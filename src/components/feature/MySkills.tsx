@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Tile from '../ui/Tile'
+import { motion } from 'framer-motion'
 
 const MySkills: FC = () => {
     const skills: { imgUrl: string; label: string }[] = [
@@ -15,30 +16,72 @@ const MySkills: FC = () => {
         { imgUrl: '/images/flutter-logo.png', label: 'Flutter' }
     ]
 
+    const variant = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                duration: 1
+            }
+        }
+    }
+
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.3
+            }
+        }
+    }
+
+    const tile = {
+        hidden: { opacity: 0, scale: 0 },
+        show: { opacity: 1, scale: 1 }
+    }
+
     return (
         <div id={'skills'} className="-mt-32 pt-32">
-            <div className="relative w-full text-center">
+            <motion.div
+                variants={variant}
+                whileInView="show"
+                initial="hidden"
+                className="relative w-full text-center"
+            >
                 <img
                     src="/images/cogwheel.png"
                     className="mx-auto h-16 w-16"
-                    alt=""
+                    alt="cogwheel-icon"
                 />
-                <h2 className="mt-10 text-4xl font-bold uppercase tracking-widest">
+                <h2 className="mt-10 text-2xl font-bold uppercase tracking-widest md:text-4xl">
                     My skills
                 </h2>
-            </div>
+            </motion.div>
 
-            <div className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-10">
+            <motion.div
+                variants={container}
+                whileInView="show"
+                initial="hidden"
+                className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-10"
+            >
                 {skills.map((item) => (
-                    <Tile
-                        imageUrl={item.imgUrl}
-                        label={item.label}
-                        key={item.label}
-                    />
+                    <motion.div variants={tile} key={item.label}>
+                        <Tile imageUrl={item.imgUrl} label={item.label} />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     )
 }
 
 export default MySkills
+
+const blobStyle = {
+    width: 40,
+    height: 40,
+    borderRadius: 75,
+    backgroundColor: '#1d1ef0',
+    position: 'absolute'
+}

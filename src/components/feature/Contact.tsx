@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import ContactForm, { ContactFormDto } from './ContactForm'
-import cx from 'classnames'
-import Spinner from '../ui/Spinner'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion'
 
 const Contact: FC = () => {
     const handleContactMe = async (payload: ContactFormDto) => {
@@ -27,6 +26,27 @@ const Contact: FC = () => {
         }
     }
 
+    const variant = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                duration: 1
+            }
+        }
+    }
+
+    const formVariant = {
+        hidden: { opacity: 0, x: -100 },
+        show: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5
+            }
+        }
+    }
+
     return (
         <section
             id={'contact'}
@@ -36,16 +56,29 @@ const Contact: FC = () => {
                 backgroundSize: 'cover'
             }}
         >
-            <div className="mx-auto -mt-32 flex max-w-screen-2xl flex-col items-center justify-center pt-32">
-                <img
-                    src="/images/envelope.png"
-                    className="h-16 w-16"
-                    alt="envelope-icon"
-                />
-                <h2 className="mt-10 text-center text-4xl font-bold uppercase tracking-widest">
-                    Contact
-                </h2>
-                <div className="mt-20 flex h-full w-full max-w-screen-xl flex-col items-center justify-center lg:flex-row lg:items-start lg:space-x-5">
+            <div className="mx-auto -mt-32 max-w-screen-2xl pt-32">
+                <motion.div
+                    variants={variant}
+                    initial="hidden"
+                    whileInView="show"
+                    className="flex flex-col items-center"
+                >
+                    <img
+                        src="/images/envelope.png"
+                        className="h-16 w-16"
+                        alt="envelope-icon"
+                    />
+                    <h2 className="mt-10 text-center text-2xl font-bold uppercase tracking-widest md:text-4xl">
+                        Contact
+                    </h2>
+                </motion.div>
+
+                <motion.div
+                    variants={formVariant}
+                    initial="hidden"
+                    whileInView="show"
+                    className="mx-auto mt-20 flex h-full w-full max-w-screen-xl flex-col items-center justify-center lg:flex-row lg:items-start lg:space-x-5"
+                >
                     <div className="order-last mt-5 flex w-full flex-col space-y-3 md:flex-row md:space-x-3 md:space-y-0 lg:order-first lg:mt-0 lg:w-fit lg:max-w-screen-md lg:flex-col lg:space-x-0 lg:space-y-5 ">
                         <div className="flex w-full flex-col items-center justify-center space-y-5 rounded-lg border border-black bg-zinc-800 p-6 sm:w-full md:h-40 lg:w-full">
                             <PhoneIcon className="h-10 w-10 text-teal-700" />
@@ -70,14 +103,14 @@ const Contact: FC = () => {
                                     href="https://www.linkedin.com/in/d-karbowniczek/"
                                     className="underline hover:text-teal-700"
                                 >
-                                    LinkedIn
+                                    d-karbowniczek
                                 </a>
                             </p>
                         </div>
                     </div>
 
                     <ContactForm callback={handleContactMe} />
-                </div>
+                </motion.div>
             </div>
         </section>
     )
