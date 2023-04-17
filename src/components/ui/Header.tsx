@@ -1,19 +1,27 @@
 import { FC, useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useScroll } from 'framer-motion'
+import { AnimatePresence, useScroll } from 'framer-motion'
 import cx from 'classnames'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
+import useIsMobile from '../../hooks/useIsMobile'
+import { Bars3Icon } from '@heroicons/react/24/outline'
+import Button from './Button'
+import NavMobile from './NavMobile'
+import Logo from './Logo'
+import { useRouter } from 'next/router'
 
 const capitalize = (text: string) =>
     text.charAt(0).toUpperCase() + text.substring(1)
 
 const Header: FC = () => {
+    const router = useRouter()
     const ids = ['home', 'skills', 'experience', 'projects', 'contact']
     const activeId = useScrollSpy(ids, 80)
+    const isMobile = useIsMobile(1024)
 
     const { scrollY } = useScroll()
 
     const [isFollowing, setIsFollowing] = useState<boolean>(scrollY.get() > 0)
+    const [isNavMobileOpened, setIsNavMobileOpened] = useState(false)
 
     useEffect(() => {
         const updateHeader = () => {
@@ -27,6 +35,10 @@ const Header: FC = () => {
         }
     }, [scrollY])
 
+    useEffect(() => {
+        setIsNavMobileOpened(false)
+    }, [router])
+
     return (
         <header
             className={cx('fixed top-0 z-20 w-full px-5 md:px-10', {
@@ -35,14 +47,7 @@ const Header: FC = () => {
             })}
         >
             <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between">
-                <div>
-                    <Link href={'/'}>
-                        <a className="text-xl font-bold uppercase sm:text-3xl">
-                            <span className="text-zinc-100">Dav</span>
-                            <span className="text-teal-600">Code</span>
-                        </a>
-                    </Link>
-                </div>
+                <Logo />
                 <ul className="hidden space-x-8 text-sm font-bold uppercase text-zinc-100 lg:flex">
                     {ids.map((id) => (
                         <li
@@ -57,12 +62,30 @@ const Header: FC = () => {
                         </li>
                     ))}
                 </ul>
-                <div>
+                <div className="hidden lg:block">
                     <button className="h-8 rounded bg-teal-700 px-3 text-xs font-bold uppercase hover:bg-teal-600 sm:h-10 sm:px-5 sm:text-sm">
                         Open CV
                     </button>
                 </div>
+                {isMobile && (
+                    <div>
+                        <Button
+                            onClick={() => setIsNavMobileOpened(true)}
+                            variant={'blank'}
+                        >
+                            <Bars3Icon className="h-6 w-6 sm:h-8 sm:w-8" />
+                        </Button>
+                    </div>
+                )}
             </div>
+            <AnimatePresence>
+                {isNavMobileOpened && (
+                    <NavMobile
+                        navItems={ids}
+                        onClose={() => setIsNavMobileOpened(false)}
+                    />
+                )}
+            </AnimatePresence>
         </header>
     )
 }

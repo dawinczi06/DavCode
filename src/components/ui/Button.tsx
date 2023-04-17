@@ -5,17 +5,24 @@ import Spinner from './Spinner'
 
 type Props = {
     isSubmitting?: boolean
+    variant?: 'primary' | 'blank'
 }
 const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
     isSubmitting,
     ...props
 }) => {
+    const variants: Record<string, string> = {
+        blank: '',
+        primary: 'bg-teal-700 text-zinc-100 hover:bg-teal-600 px-5'
+    }
+
     return (
         <button
             {...props}
             className={cx(
-                'relative flex h-10 w-full w-full items-center justify-center whitespace-nowrap rounded bg-teal-700 px-5 text-sm font-bold uppercase text-zinc-100 transition hover:bg-teal-600',
-                props.className
+                'relative flex h-10 w-full items-center justify-center whitespace-nowrap rounded text-sm font-bold uppercase transition ',
+                props.className,
+                variants[props.variant ?? 'primary']
             )}
             type={props.type}
             disabled={props.disabled || isSubmitting}
