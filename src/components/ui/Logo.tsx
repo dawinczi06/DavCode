@@ -6,10 +6,17 @@ const Logo: FC = () => {
         <div>
             <Link
                 href={'/'}
-                className="text-xl font-bold uppercase sm:text-3xl"
+                className="flex h-8 items-center space-x-2 text-xl font-bold uppercase sm:text-3xl"
             >
-                <span className="text-zinc-100">Dav</span>
-                <span className="text-teal-600">Code</span>
+                <img
+                    src={'/images/logo.svg'}
+                    alt=""
+                    className="h-full w-full"
+                />
+                <p>
+                    <span className="text-violet-500">Dav</span>
+                    <span className="text-teal-600">Code</span>
+                </p>
             </Link>
         </div>
     )
