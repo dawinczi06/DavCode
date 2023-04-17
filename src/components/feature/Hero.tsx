@@ -55,7 +55,8 @@ const Hero: FC = () => {
                     </p>
                     <p className="mt-5 text-sm sm:text-base xl:text-lg">
                         Passionate programmer, always keen to embrace new
-                        technologies, looking for different solutions.
+                        technologies, looking for different solutions. Currently
+                        focused on frontend development!
                     </p>
                     <div className="group relative mt-10 h-12 max-w-max cursor-pointer">
                         <button className="relative z-10 flex h-full items-center space-x-4 rounded bg-teal-600 px-7 text-lg font-bold transition group-hover:bg-teal-700">
@@ -69,8 +70,13 @@ const Hero: FC = () => {
                 <HeroAnimation />
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="visible" variants={arrow}>
-                <ArrowLongDownIcon className="absolute bottom-6 h-14 w-14 animate-bounce text-zinc-100 xl:bottom-20" />
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={arrow}
+                className="absolute inset-x-1/2 bottom-6 h-10 w-10 -translate-x-1/2 sm:h-14 sm:w-14 xl:bottom-20"
+            >
+                <ArrowLongDownIcon className="h-full w-full animate-bounce text-zinc-100" />
             </motion.div>
         </div>
     )
