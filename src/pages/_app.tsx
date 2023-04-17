@@ -9,7 +9,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <>
             <Head>
                 <title>DavCode</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon-logo.ico" />
             </Head>
 
             <AppContextProvider>
