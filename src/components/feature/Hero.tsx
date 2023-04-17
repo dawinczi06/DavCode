@@ -59,10 +59,13 @@ const Hero: FC = () => {
                         focused on frontend development!
                     </p>
                     <div className="group relative mt-10 h-12 max-w-max cursor-pointer">
-                        <button className="relative z-10 flex h-full items-center space-x-4 rounded bg-teal-600 px-7 text-lg font-bold transition group-hover:bg-teal-700">
+                        <a
+                            href={`#projects`}
+                            className="relative z-10 flex h-full items-center space-x-4 rounded bg-teal-600 px-7 text-lg font-bold transition group-hover:bg-teal-700"
+                        >
                             <span>Projects</span>
                             <ArrowLongRightIcon className="h-6 w-6 transition group-hover:translate-x-2" />
-                        </button>
+                        </a>
                         <div className="absolute top-2 left-2 h-full w-full rounded border border-teal-600"></div>
                     </div>
                 </div>
