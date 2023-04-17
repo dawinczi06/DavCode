@@ -88,7 +88,7 @@ const NavMobile: FC<Props> = (props) => {
                     {props.navItems.map((item) => (
                         <motion.li
                             variants={listItem}
-                            className="text-xl font-bold hover:text-teal-600"
+                            className="text-lg font-bold hover:text-teal-600"
                         >
                             <Link
                                 href={`#${item}`}
