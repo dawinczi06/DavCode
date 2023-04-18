@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Button from './Button'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { ArrowDownTrayIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from './Logo'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -59,6 +59,21 @@ const NavMobile: FC<Props> = (props) => {
         }
     }
 
+    const cvButton = {
+        hidden: {
+            opacity: 0,
+            x: 100
+        },
+        show: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: 0.9,
+                duration: 0.3
+            }
+        }
+    }
+
     return (
         <motion.div
             key={'test'}
@@ -100,6 +115,18 @@ const NavMobile: FC<Props> = (props) => {
                     ))}
                 </motion.ul>
             </nav>
+
+            <motion.a
+                variants={cvButton}
+                initial="hidden"
+                animate="show"
+                href={'/cv.pdf'}
+                download
+                className="mt-10 flex h-10 max-w-max items-center justify-center space-x-3 rounded bg-teal-700 px-3 text-zinc-200 shadow-lg shadow-zinc-900 hover:bg-teal-600"
+            >
+                <ArrowDownTrayIcon className="h-6 w-6" />
+                <span className="text-sm font-bold">Download CV</span>
+            </motion.a>
         </motion.div>
     )
 }
