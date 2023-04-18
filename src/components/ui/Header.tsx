@@ -42,6 +42,14 @@ const Header: FC = () => {
         setIsNavMobileOpened(false)
     }, [router])
 
+    useEffect(() => {
+        if (pdfModalOpened) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+    }, [pdfModalOpened])
+
     return (
         <header
             className={cx('fixed top-0 z-20 w-full px-5 md:px-10', {

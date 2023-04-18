@@ -37,7 +37,7 @@ const PDFViewer: FC<Props> = (props) => {
     }
 
     return (
-        <div className="flex h-full flex-col items-center justify-center">
+        <div className="flex h-full flex-col items-center justify-center py-5">
             {!isError ? (
                 <div className="overflow-auto scrollbar scrollbar-thin scrollbar-thumb-zinc-400">
                     <div className="relative flex min-h-[120px] items-center rounded-lg bg-zinc-900 p-2">
