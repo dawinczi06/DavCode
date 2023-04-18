@@ -5,6 +5,7 @@ import { PDFDocumentProxy } from 'pdfjs-dist'
 import cx from 'classnames'
 
 import {
+    ArrowDownTrayIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
     XMarkIcon
@@ -18,7 +19,7 @@ type Props = {
 }
 
 const PDFViewer: FC<Props> = (props) => {
-    const [file] = useState('./Karbowniczek-Dawid-CV.pdf')
+    const [file] = useState('./cv.pdf')
     const [numPages, setNumPages] = useState<number | null>(null)
     const [pageNumber, setPageNumber] = useState(1)
     const [isError, setIsError] = useState(false)
@@ -78,13 +79,23 @@ const PDFViewer: FC<Props> = (props) => {
                                         <ChevronRightIcon className="h-5 w-5 text-zinc-900" />
                                     </button>
                                 </div>
+                                <a
+                                    href={'/cv.pdf'}
+                                    download
+                                    className="absolute top-10 left-16 flex h-10 items-center justify-center space-x-3 rounded bg-white px-3 text-zinc-900 shadow-lg shadow-zinc-900 hover:bg-zinc-200"
+                                >
+                                    <ArrowDownTrayIcon className="h-6 w-6" />
+                                    <span className="text-sm font-bold">
+                                        Download
+                                    </span>
+                                </a>
                             </>
                         )}
 
                         <button
                             onClick={props.onClose}
                             className={cx(
-                                'absolute flex h-10 w-10 items-center justify-center bg-teal-700 hover:bg-teal-600',
+                                'absolute flex h-10 w-10 items-center justify-center rounded-bl bg-teal-700 hover:bg-teal-600',
                                 numPages ? 'top-2 right-2' : 'top-0 right-0'
                             )}
                         >
