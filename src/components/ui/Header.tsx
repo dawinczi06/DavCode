@@ -8,6 +8,8 @@ import Button from './Button'
 import NavMobile from './NavMobile'
 import Logo from './Logo'
 import { useRouter } from 'next/router'
+import Modal from '../feature/Modal'
+import PDFViewer from '../feature/PdfViewer'
 
 const capitalize = (text: string) =>
     text.charAt(0).toUpperCase() + text.substring(1)
@@ -20,6 +22,7 @@ const Header: FC = () => {
 
     const { scrollY } = useScroll()
 
+    const [pdfModalOpened, setPdfModalOpened] = useState<boolean>(false)
     const [isFollowing, setIsFollowing] = useState<boolean>(scrollY.get() > 0)
     const [isNavMobileOpened, setIsNavMobileOpened] = useState(false)
 
@@ -63,9 +66,9 @@ const Header: FC = () => {
                     ))}
                 </ul>
                 <div className="hidden lg:block">
-                    <button className="h-8 rounded bg-teal-700 px-3 text-xs font-bold uppercase hover:bg-teal-600 sm:h-10 sm:px-5 sm:text-sm">
+                    <Button onClick={() => setPdfModalOpened(true)}>
                         Open CV
-                    </button>
+                    </Button>
                 </div>
                 {isMobile && (
                     <div>
@@ -86,6 +89,12 @@ const Header: FC = () => {
                     />
                 )}
             </AnimatePresence>
+
+            {pdfModalOpened && (
+                <Modal>
+                    <PDFViewer onClose={() => setPdfModalOpened(false)} />
+                </Modal>
+            )}
         </header>
     )
 }

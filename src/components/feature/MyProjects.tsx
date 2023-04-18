@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { FC } from 'react'
-
 const MyProjects: FC = () => {
     const variant = {
         hidden: { opacity: 0 },
@@ -31,6 +30,7 @@ const MyProjects: FC = () => {
                 <h2 className="mt-10 text-center text-2xl font-bold uppercase tracking-widest md:text-4xl ">
                     My Projects
                 </h2>
+                <p className="mt-10 italic">Section in progress...</p>
             </motion.div>
         </section>
     )

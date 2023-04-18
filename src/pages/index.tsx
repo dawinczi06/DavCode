@@ -5,7 +5,6 @@ import Section from '../components/feature/Section'
 import MyExperience from '../components/feature/MyExperience'
 import MyProjects from '../components/feature/MyProjects'
 import Contact from '../components/feature/Contact'
-
 const Home: NextPage = () => {
     return (
         <>
@@ -17,6 +16,7 @@ const Home: NextPage = () => {
             </Section>
 
             <MyProjects />
+
             <Contact />
         </>
     )
