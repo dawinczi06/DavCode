@@ -59,7 +59,38 @@ const MyExperience: FC = () => {
                     <TimelineTile
                         isFirst={true}
                         isLast={false}
-                        years={'2021 - present'}
+                        years={'2023 - present'}
+                    >
+                        <div className="flex items-center space-x-5">
+                            <BriefcaseIcon className="h-10 w-10" />
+                            <div>
+                                <h3 className="text-xl font-bold uppercase">
+                                    Software Developer
+                                </h3>
+                                <p className="text-sm text-teal-600">
+                                    EBM Software | USA
+                                </p>
+                            </div>
+                        </div>
+
+                        <ul className="mt-5 list-inside list-disc space-y-1 text-sm">
+                            <li>
+                                Continuously expanding a project - Implementing
+                                new features, components and logic based on
+                                Figma designs.
+                            </li>
+                            <li>
+                                Maintaining the code, reacting on issues,
+                                implementing changes/suggestions.
+                            </li>
+                        </ul>
+                    </TimelineTile>
+                </motion.div>
+                <motion.div variants={tile}>
+                    <TimelineTile
+                        isFirst={true}
+                        isLast={false}
+                        years={'2021 - 2023'}
                     >
                         <div className="flex items-center space-x-5">
                             <BriefcaseIcon className="h-10 w-10" />
